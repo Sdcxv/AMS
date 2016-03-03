@@ -2,6 +2,8 @@ package com.sdcxv.ams.controller;
 
 import com.sdcxv.ams.model.Course;
 import com.sdcxv.ams.service.CourseService;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -33,7 +38,7 @@ public class CourseController {
     //处理/courses/view
     @RequestMapping(value = "/view", method = RequestMethod.GET)
     public String viewCourse(@RequestParam("courseId") Integer courseId, Model model) {
-        log.warn("In viewCourse, courseId={}", courseId);
+        log.info("In viewCourse, courseId={}", courseId);
         Course course = courseService.getCoursebyId(courseId);
         model.addAttribute(course);
         return "course_overview";
@@ -42,7 +47,7 @@ public class CourseController {
     //RUSTful
     @RequestMapping(value = "/view2/{courseId}", method = RequestMethod.GET)
     public String viewCourse2(@PathVariable("courseId") Integer courseId, Map<String, Course> model) {
-        log.warn("In viewCourse, courseId={}", courseId);
+        log.info("In viewCourse, courseId={}", courseId);
         Course course = courseService.getCoursebyId(courseId);
         model.put("course", course);
         return "course_overview";
@@ -52,7 +57,7 @@ public class CourseController {
     @RequestMapping(value = "/view3", method = RequestMethod.GET)
     public String viewCourse3(HttpServletRequest request) {
         Integer courseId = Integer.valueOf(request.getParameter("courseId"));
-        log.warn("In viewCourse, courseId={}", courseId);
+        log.info("In viewCourse, courseId={}", courseId);
         Course course = courseService.getCoursebyId(courseId);
         request.setAttribute("course", course);
         return "course_overview";
@@ -61,5 +66,31 @@ public class CourseController {
     @RequestMapping(value = "/admin", method = RequestMethod.GET, params = "add")
     public String createCourse() {
         return "course_admin/edit";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String doSave(Course course) {
+        log.info("In viewCourse:");
+        log.info(ReflectionToStringBuilder.toString(course));
+        course.setCourseId(1024);
+        return "redirect:view2/" + course.getCourseId();
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.GET)
+    public String showUploadPage() {
+        return "course_admin/file";
+    }
+
+    @RequestMapping(value = "/doUpload", method = RequestMethod.POST)
+    public String doUploadFile(@RequestParam("file") MultipartFile file) {
+        if (!file.isEmpty()) {
+            log.info("Processing file:{}", file.getOriginalFilename());
+            try {
+                FileUtils.copyInputStreamToFile(file.getInputStream(), new File("C:\\temp\\", System.currentTimeMillis() + file.getOriginalFilename()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return "success";
     }
 }

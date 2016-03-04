@@ -16,7 +16,25 @@
         </developer>
     </developers>
 
+    <repositories>
+        <!--英国中央仓库-->
+        <repository>
+            <id>UK</id>
+            <name>UK Central</name>
+            <url>http://uk.maven.org/maven2</url>
+        </repository>
+        <!--jitpack库-->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <properties>
+        <!--JDK version-->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!--Other dependencies version-->
         <spring.version>4.2.5.RELEASE</spring.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-io.version>2.4</commons-io.version>
@@ -26,6 +44,10 @@
         <jstl.version>1.2</jstl.version>
         <servlet.version>2.5</servlet.version>
         <jackson.version>2.7.0</jackson.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
+        <mybatis.version>3.3.0</mybatis.version>
+        <mybatis-spring.version>1.2.3</mybatis-spring.version>
+        <mybatis-java-time.version>0.2</mybatis-java-time.version>
     </properties>
 
     <dependencies>
@@ -67,6 +89,11 @@
             <type>pom</type>
             <scope>import</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -89,6 +116,29 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${commons-dbcp.version}</version>
+        </dependency>
+
+        <!--mybatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis-spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javaplugs</groupId>
+            <artifactId>mybatis-java-time</artifactId>
+            <version>${mybatis-java-time.version}</version>
         </dependency>
     </dependencies>
 

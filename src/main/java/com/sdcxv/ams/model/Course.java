@@ -40,7 +40,6 @@ public class Course {
      * This method returns the value of the database column course.course_id
      *
      * @return the value of course.course_id
-     *
      * @mbggenerated
      */
     public Integer getCourseId() {
@@ -52,7 +51,6 @@ public class Course {
      * This method sets the value of the database column course.course_id
      *
      * @param courseId the value for course.course_id
-     *
      * @mbggenerated
      */
     public void setCourseId(Integer courseId) {
@@ -64,7 +62,6 @@ public class Course {
      * This method returns the value of the database column course.name
      *
      * @return the value of course.name
-     *
      * @mbggenerated
      */
     public String getName() {
@@ -76,7 +73,6 @@ public class Course {
      * This method sets the value of the database column course.name
      *
      * @param name the value for course.name
-     *
      * @mbggenerated
      */
     public void setName(String name) {
@@ -88,7 +84,6 @@ public class Course {
      * This method returns the value of the database column course.teacher_id
      *
      * @return the value of course.teacher_id
-     *
      * @mbggenerated
      */
     public Integer getTeacherId() {
@@ -100,7 +95,6 @@ public class Course {
      * This method sets the value of the database column course.teacher_id
      *
      * @param teacherId the value for course.teacher_id
-     *
      * @mbggenerated
      */
     public void setTeacherId(Integer teacherId) {
@@ -112,7 +106,6 @@ public class Course {
      * This method returns the value of the database column course.update_time
      *
      * @return the value of course.update_time
-     *
      * @mbggenerated
      */
     public Date getUpdateTime() {
@@ -124,7 +117,6 @@ public class Course {
      * This method sets the value of the database column course.update_time
      *
      * @param updateTime the value for course.update_time
-     *
      * @mbggenerated
      */
     public void setUpdateTime(Date updateTime) {

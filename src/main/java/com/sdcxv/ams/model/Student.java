@@ -32,7 +32,6 @@ public class Student {
      * This method returns the value of the database column student.student_id
      *
      * @return the value of student.student_id
-     *
      * @mbggenerated
      */
     public Integer getStudentId() {
@@ -44,7 +43,6 @@ public class Student {
      * This method sets the value of the database column student.student_id
      *
      * @param studentId the value for student.student_id
-     *
      * @mbggenerated
      */
     public void setStudentId(Integer studentId) {
@@ -56,7 +54,6 @@ public class Student {
      * This method returns the value of the database column student.name
      *
      * @return the value of student.name
-     *
      * @mbggenerated
      */
     public String getName() {
@@ -68,7 +65,6 @@ public class Student {
      * This method sets the value of the database column student.name
      *
      * @param name the value for student.name
-     *
      * @mbggenerated
      */
     public void setName(String name) {
@@ -80,7 +76,6 @@ public class Student {
      * This method returns the value of the database column student.update_time
      *
      * @return the value of student.update_time
-     *
      * @mbggenerated
      */
     public Date getUpdateTime() {
@@ -92,7 +87,6 @@ public class Student {
      * This method sets the value of the database column student.update_time
      *
      * @param updateTime the value for student.update_time
-     *
      * @mbggenerated
      */
     public void setUpdateTime(Date updateTime) {

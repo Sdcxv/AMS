@@ -40,7 +40,6 @@ public class CourseList {
      * This method returns the value of the database column course_list.course_list_id
      *
      * @return the value of course_list.course_list_id
-     *
      * @mbggenerated
      */
     public Integer getCourseListId() {
@@ -52,7 +51,6 @@ public class CourseList {
      * This method sets the value of the database column course_list.course_list_id
      *
      * @param courseListId the value for course_list.course_list_id
-     *
      * @mbggenerated
      */
     public void setCourseListId(Integer courseListId) {
@@ -64,7 +62,6 @@ public class CourseList {
      * This method returns the value of the database column course_list.student_id
      *
      * @return the value of course_list.student_id
-     *
      * @mbggenerated
      */
     public Integer getStudentId() {
@@ -76,7 +73,6 @@ public class CourseList {
      * This method sets the value of the database column course_list.student_id
      *
      * @param studentId the value for course_list.student_id
-     *
      * @mbggenerated
      */
     public void setStudentId(Integer studentId) {
@@ -88,7 +84,6 @@ public class CourseList {
      * This method returns the value of the database column course_list.course_id
      *
      * @return the value of course_list.course_id
-     *
      * @mbggenerated
      */
     public Integer getCourseId() {
@@ -100,7 +95,6 @@ public class CourseList {
      * This method sets the value of the database column course_list.course_id
      *
      * @param courseId the value for course_list.course_id
-     *
      * @mbggenerated
      */
     public void setCourseId(Integer courseId) {
@@ -112,7 +106,6 @@ public class CourseList {
      * This method returns the value of the database column course_list.update_time
      *
      * @return the value of course_list.update_time
-     *
      * @mbggenerated
      */
     public Date getUpdateTime() {
@@ -124,7 +117,6 @@ public class CourseList {
      * This method sets the value of the database column course_list.update_time
      *
      * @param updateTime the value for course_list.update_time
-     *
      * @mbggenerated
      */
     public void setUpdateTime(Date updateTime) {

@@ -1,6 +1,6 @@
 package com.sdcxv.ams.controller;
 
-import com.sdcxv.ams.model.Course;
+import com.sdcxv.ams.model.Course2;
 import com.sdcxv.ams.service.CourseService;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
@@ -38,16 +38,16 @@ public class CourseController {
     @RequestMapping(value = "/view", method = RequestMethod.GET)
     public String viewCourse(@RequestParam("courseId") Integer courseId, Model model) {
         log.info("In viewCourse, courseId={}", courseId);
-        Course course = courseService.getCoursebyId(courseId);
+        Course2 course = courseService.getCoursebyId(courseId);
         model.addAttribute(course);
         return "course_overview";
     }
 
     //RUSTful
     @RequestMapping(value = "/view2/{courseId}", method = RequestMethod.GET)
-    public String viewCourse2(@PathVariable("courseId") Integer courseId, Map<String, Course> model) {
+    public String viewCourse2(@PathVariable("courseId") Integer courseId, Map<String, Course2> model) {
         log.info("In viewCourse, courseId={}", courseId);
-        Course course = courseService.getCoursebyId(courseId);
+        Course2 course = courseService.getCoursebyId(courseId);
         model.put("course", course);
         return "course_overview";
     }
@@ -57,7 +57,7 @@ public class CourseController {
     public String viewCourse3(HttpServletRequest request) {
         Integer courseId = Integer.valueOf(request.getParameter("courseId"));
         log.info("In viewCourse, courseId={}", courseId);
-        Course course = courseService.getCoursebyId(courseId);
+        Course2 course = courseService.getCoursebyId(courseId);
         request.setAttribute("course", course);
         return "course_overview";
     }
@@ -68,7 +68,7 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String doSave(Course course) {
+    public String doSave(Course2 course) {
         log.info("In viewCourse:");
         log.info(ReflectionToStringBuilder.toString(course));
         course.setCourseId(1024);
@@ -97,16 +97,16 @@ public class CourseController {
     @RequestMapping(value = "/{courseId}", method = RequestMethod.GET)
     public
     @ResponseBody
-    Course getCourseInJson(@PathVariable("courseId") Integer courseId) {
+    Course2 getCourseInJson(@PathVariable("courseId") Integer courseId) {
         log.info("In viewCourse, courseId={}", courseId);
         return courseService.getCoursebyId(courseId);
     }
 
     //JSON2
     @RequestMapping(value = "/jsontype/{courseId}", method = RequestMethod.GET)
-    public ResponseEntity<Course> getCourseInJson2(@PathVariable("courseId") Integer courseId) {
+    public ResponseEntity<Course2> getCourseInJson2(@PathVariable("courseId") Integer courseId) {
         log.info("In viewCourse, courseId={}", courseId);
-        Course course = courseService.getCoursebyId(courseId);
-        return new ResponseEntity<Course>(course, HttpStatus.OK);
+        Course2 course = courseService.getCoursebyId(courseId);
+        return new ResponseEntity<Course2>(course, HttpStatus.OK);
     }
 }

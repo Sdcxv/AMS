@@ -1,7 +1,7 @@
 package com.sdcxv.ams.service.impl;
 
 import com.sdcxv.ams.model.Chapter;
-import com.sdcxv.ams.model.Course;
+import com.sdcxv.ams.model.Course2;
 import com.sdcxv.ams.service.CourseService;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +13,9 @@ import java.util.List;
  */
 @Service
 public class CourseServiceImpl implements CourseService {
-    public Course getCoursebyId(Integer courseId) {
+    public Course2 getCoursebyId(Integer courseId) {
 
-        Course course = new Course();
+        Course2 course = new Course2();
 
         course.setCourseId(courseId);
         course.setTitle("深入浅出Java多线程");
@@ -30,7 +30,7 @@ public class CourseServiceImpl implements CourseService {
 
         warpChapterList(courseId, chapterList);
 
-        course.setChapterList(chapterList);
+//        course.setChapterList(chapterList);
 
         return course;
     }

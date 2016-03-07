@@ -40,7 +40,6 @@ public class CourseTime {
      * This method returns the value of the database column course_time.course_time_id
      *
      * @return the value of course_time.course_time_id
-     *
      * @mbggenerated
      */
     public Integer getCourseTimeId() {
@@ -52,7 +51,6 @@ public class CourseTime {
      * This method sets the value of the database column course_time.course_time_id
      *
      * @param courseTimeId the value for course_time.course_time_id
-     *
      * @mbggenerated
      */
     public void setCourseTimeId(Integer courseTimeId) {
@@ -64,7 +62,6 @@ public class CourseTime {
      * This method returns the value of the database column course_time.name
      *
      * @return the value of course_time.name
-     *
      * @mbggenerated
      */
     public String getName() {
@@ -76,7 +73,6 @@ public class CourseTime {
      * This method sets the value of the database column course_time.name
      *
      * @param name the value for course_time.name
-     *
      * @mbggenerated
      */
     public void setName(String name) {
@@ -88,7 +84,6 @@ public class CourseTime {
      * This method returns the value of the database column course_time.course_id
      *
      * @return the value of course_time.course_id
-     *
      * @mbggenerated
      */
     public Integer getCourseId() {
@@ -100,7 +95,6 @@ public class CourseTime {
      * This method sets the value of the database column course_time.course_id
      *
      * @param courseId the value for course_time.course_id
-     *
      * @mbggenerated
      */
     public void setCourseId(Integer courseId) {
@@ -112,7 +106,6 @@ public class CourseTime {
      * This method returns the value of the database column course_time.course_time
      *
      * @return the value of course_time.course_time
-     *
      * @mbggenerated
      */
     public Date getCourseTime() {
@@ -124,7 +117,6 @@ public class CourseTime {
      * This method sets the value of the database column course_time.course_time
      *
      * @param courseTime the value for course_time.course_time
-     *
      * @mbggenerated
      */
     public void setCourseTime(Date courseTime) {

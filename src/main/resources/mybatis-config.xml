@@ -25,5 +25,4 @@
         <typeHandler handler="com.github.javaplugs.mybatis.OffsetDateTimeHandler"/>
         <typeHandler handler="com.github.javaplugs.mybatis.ZonedDateTimeHandler"/>
     </typeHandlers>
-
 </configuration>

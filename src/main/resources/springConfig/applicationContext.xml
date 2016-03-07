@@ -2,12 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans.xsd
-
-
           http://www.springframework.org/schema/context
-          http://www.springframework.org/schema/context/spring-context.xsd">
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!--启用注解-->
     <context:annotation-config/>
 
@@ -35,21 +37,35 @@
         <property name="password" value="${jdbc.password.mysql_aliyun}"/>
     </bean>
 
+    <!-- myBatis的配置项 -->
     <!-- 配置sqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 实例化sqlSessionFactory时需要使用上述配置好的数据源以及SQL映射文件 -->
         <property name="dataSource" ref="dataSourceLocal"/>
-        <!-- 自动到mappers下面去搜索mybatis的映射文件 -->
-        <property name="mapperLocations" value="classpath*:mappers/**/*.xml"/>
+        <!-- 指定MyBatis配置文件路径 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- 自动到mappers下面去搜索mybatis的映射文件，省掉mybatis-config.xml里的手工配置 -->
+        <property name="mapperLocations" value="classpath*:com/sdcxv/ams/model/xml/*.xml"/>
+    </bean>
+    <!-- 配置扫描器 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 查找类路径下的映射器并自动将它们创建成MapperFactoryBean -->
+        <property name="basePackage" value="com.sdcxv.ams.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
-    <!-- 使用Spring的事务管理器 -->
+    <!-- JDBC事务管理器 -->
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- DataSource事务管理器需要数据源实例 -->
         <property name="dataSource" ref="dataSourceLocal"/>
     </bean>
+    <!-- 启用对事务注解的支持  -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--给mybatis添加java.time支持-->
     <bean id="mybatisJavaTimePlugs" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceLocal"/>
         <property name="typeHandlersPackage" value="com.github.javaplugs.mybatis"/>
     </bean>
 </beans>

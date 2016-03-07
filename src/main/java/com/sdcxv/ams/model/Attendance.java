@@ -64,7 +64,6 @@ public class Attendance {
      * This method returns the value of the database column attendance.attendance_id
      *
      * @return the value of attendance.attendance_id
-     *
      * @mbggenerated
      */
     public Integer getAttendanceId() {
@@ -76,7 +75,6 @@ public class Attendance {
      * This method sets the value of the database column attendance.attendance_id
      *
      * @param attendanceId the value for attendance.attendance_id
-     *
      * @mbggenerated
      */
     public void setAttendanceId(Integer attendanceId) {
@@ -88,7 +86,6 @@ public class Attendance {
      * This method returns the value of the database column attendance.student_id
      *
      * @return the value of attendance.student_id
-     *
      * @mbggenerated
      */
     public Integer getStudentId() {
@@ -100,7 +97,6 @@ public class Attendance {
      * This method sets the value of the database column attendance.student_id
      *
      * @param studentId the value for attendance.student_id
-     *
      * @mbggenerated
      */
     public void setStudentId(Integer studentId) {
@@ -112,7 +108,6 @@ public class Attendance {
      * This method returns the value of the database column attendance.teacher_id
      *
      * @return the value of attendance.teacher_id
-     *
      * @mbggenerated
      */
     public Integer getTeacherId() {
@@ -124,7 +119,6 @@ public class Attendance {
      * This method sets the value of the database column attendance.teacher_id
      *
      * @param teacherId the value for attendance.teacher_id
-     *
      * @mbggenerated
      */
     public void setTeacherId(Integer teacherId) {
@@ -136,7 +130,6 @@ public class Attendance {
      * This method returns the value of the database column attendance.course_id
      *
      * @return the value of attendance.course_id
-     *
      * @mbggenerated
      */
     public Integer getCourseId() {
@@ -148,7 +141,6 @@ public class Attendance {
      * This method sets the value of the database column attendance.course_id
      *
      * @param courseId the value for attendance.course_id
-     *
      * @mbggenerated
      */
     public void setCourseId(Integer courseId) {
@@ -160,7 +152,6 @@ public class Attendance {
      * This method returns the value of the database column attendance.attendance_time
      *
      * @return the value of attendance.attendance_time
-     *
      * @mbggenerated
      */
     public Date getAttendanceTime() {
@@ -172,7 +163,6 @@ public class Attendance {
      * This method sets the value of the database column attendance.attendance_time
      *
      * @param attendanceTime the value for attendance.attendance_time
-     *
      * @mbggenerated
      */
     public void setAttendanceTime(Date attendanceTime) {
@@ -184,7 +174,6 @@ public class Attendance {
      * This method returns the value of the database column attendance.status
      *
      * @return the value of attendance.status
-     *
      * @mbggenerated
      */
     public Boolean getStatus() {
@@ -196,7 +185,6 @@ public class Attendance {
      * This method sets the value of the database column attendance.status
      *
      * @param status the value for attendance.status
-     *
      * @mbggenerated
      */
     public void setStatus(Boolean status) {
@@ -208,7 +196,6 @@ public class Attendance {
      * This method returns the value of the database column attendance.create_time
      *
      * @return the value of attendance.create_time
-     *
      * @mbggenerated
      */
     public Date getCreateTime() {
@@ -220,7 +207,6 @@ public class Attendance {
      * This method sets the value of the database column attendance.create_time
      *
      * @param createTime the value for attendance.create_time
-     *
      * @mbggenerated
      */
     public void setCreateTime(Date createTime) {

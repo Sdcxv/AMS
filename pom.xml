@@ -23,11 +23,6 @@
             <name>UK Central</name>
             <url>http://uk.maven.org/maven2</url>
         </repository>
-        <!--jitpack库-->
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
     </repositories>
 
     <properties>
@@ -40,6 +35,7 @@
         <commons-io.version>2.4</commons-io.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <slf4j.version>1.7.13</slf4j.version>
+        <log4j.version>2.5</log4j.version>
         <junit.version>4.12</junit.version>
         <jstl.version>1.2</jstl.version>
         <servlet.version>2.5</servlet.version>
@@ -77,6 +73,12 @@
             <version>${slf4j.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
         <!--Spring framework-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -93,6 +95,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
@@ -136,11 +143,13 @@
             <artifactId>mybatis-spring</artifactId>
             <version>${mybatis-spring.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>com.github.javaplugs</groupId>
-            <artifactId>mybatis-java-time</artifactId>
-            <version>${mybatis-java-time.version}</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
         </dependency>
+
     </dependencies>
 
     <build>

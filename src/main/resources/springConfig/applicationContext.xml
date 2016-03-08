@@ -2,14 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="
-          http://www.springframework.org/schema/beans
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/context
           http://www.springframework.org/schema/context/spring-context.xsd
           http://www.springframework.org/schema/tx
-          http://www.springframework.org/schema/tx/spring-tx.xsd">
+          http://www.springframework.org/schema/tx/spring-tx.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
     <!--启用注解-->
     <context:annotation-config/>
 
@@ -44,28 +43,16 @@
         <property name="dataSource" ref="dataSourceLocal"/>
         <!-- 指定MyBatis配置文件路径 -->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <!-- 自动到mappers下面去搜索mybatis的映射文件，省掉mybatis-config.xml里的手工配置 -->
-        <property name="mapperLocations" value="classpath*:com/sdcxv/ams/model/xml/*.xml"/>
     </bean>
-    <!-- 配置扫描器 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!-- 查找类路径下的映射器并自动将它们创建成MapperFactoryBean -->
-        <property name="basePackage" value="com.sdcxv.ams.mapper"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-    </bean>
+
+    <mybatis:scan base-package="com.sdcxv.ams.mapper"/>
 
     <!-- JDBC事务管理器 -->
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <!-- DataSource事务管理器需要数据源实例 -->
+        <!--DataSource事务管理器需要数据源实例-->
         <property name="dataSource" ref="dataSourceLocal"/>
     </bean>
     <!-- 启用对事务注解的支持  -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
-
-    <!--给mybatis添加java.time支持-->
-    <bean id="mybatisJavaTimePlugs" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSourceLocal"/>
-        <property name="typeHandlersPackage" value="com.github.javaplugs.mybatis"/>
-    </bean>
 </beans>

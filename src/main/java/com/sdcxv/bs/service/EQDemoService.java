@@ -1,6 +1,6 @@
-package com.sdcxv.ams.service;
+package com.sdcxv.bs.service;
 
-import com.sdcxv.ams.model.EQ;
+import com.sdcxv.bs.model.EQ;
 
 /**
  * Created by Xudong.Liu on 2016/10/10.

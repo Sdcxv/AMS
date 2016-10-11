@@ -1,4 +1,4 @@
-package com.sdcxv.ams.model;
+package com.sdcxv.bs.model;
 
 /**
  * Created by Xudong.Liu on 2016/10/10.
@@ -6,6 +6,7 @@ package com.sdcxv.ams.model;
 public class EQ {
     // warm-dry， from 10 to -10
     private int x;
+
     // excited-relax from 10 to -10
     private int y;
 

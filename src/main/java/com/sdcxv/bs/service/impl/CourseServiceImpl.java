@@ -1,8 +1,8 @@
-package com.sdcxv.ams.service.impl;
+package com.sdcxv.bs.service.impl;
 
-import com.sdcxv.ams.model.Chapter;
-import com.sdcxv.ams.model.Course;
-import com.sdcxv.ams.service.CourseService;
+import com.sdcxv.bs.model.Chapter;
+import com.sdcxv.bs.model.Course;
+import com.sdcxv.bs.service.CourseService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

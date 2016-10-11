@@ -1,4 +1,4 @@
-package com.sdcxv.ams.model;
+package com.sdcxv.bs.model;
 
 /**
  * Created by Sdcxv on 2016/3/3.

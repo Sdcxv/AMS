@@ -1,6 +1,6 @@
-package com.sdcxv.ams.service;
+package com.sdcxv.bs.service;
 
-import com.sdcxv.ams.model.Course;
+import com.sdcxv.bs.model.Course;
 
 /**
  * Created by Sdcxv on 2016/3/3.

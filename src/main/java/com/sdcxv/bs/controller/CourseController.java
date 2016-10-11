@@ -1,7 +1,7 @@
-package com.sdcxv.ams.controller;
+package com.sdcxv.bs.controller;
 
-import com.sdcxv.ams.model.Course;
-import com.sdcxv.ams.service.CourseService;
+import com.sdcxv.bs.model.Course;
+import com.sdcxv.bs.service.CourseService;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.slf4j.Logger;

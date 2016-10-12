@@ -44,12 +44,7 @@ public class EQDemoController {
     @ResponseBody
     EQ getEQInJson() {
         log.info("Getting EQ Setting.");
-        EQ temp = eqDemoService.getEQ();
-        eqDemoService.setEQ(new EQ());
-        if (0 == temp.getY() && 0 == temp.getX())
-            return null;
-        else
-            return temp;
+        return eqDemoService.getEQ();
     }
 
     @RequestMapping(value = "/delay", method = RequestMethod.GET)
@@ -58,18 +53,18 @@ public class EQDemoController {
     EQ getEQInJsonDelay() {
 
         log.info("Getting EQ Setting.");
-        while (0 != eqDemoService.getEQ().getX() && 0 != eqDemoService.getEQ().getY()) {
+        while (0 == eqDemoService.getEQ().getX() && 0 == eqDemoService.getEQ().getY()) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            if(eqDemoService.endThread()){
+                return new EQ();
+            }
         }
         EQ temp = eqDemoService.getEQ();
         eqDemoService.setEQ(new EQ());
-        if (0 == temp.getY() && 0 == temp.getX())
-            return null;
-        else
-            return temp;
+        return temp;
     }
 }

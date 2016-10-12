@@ -15,4 +15,6 @@ public interface EQDemoService {
      * 获取设置好的Demo EQ
      * */
     EQ getEQ();
+
+    boolean endThread();
 }

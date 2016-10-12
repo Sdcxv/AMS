@@ -13,18 +13,23 @@ import org.springframework.stereotype.Service;
 public class EQDemoServiceImpl implements EQDemoService {
     private static Logger log = LoggerFactory.getLogger(EQDemoServiceImpl.class);
     private EQ demoEQ = new EQ();
+    private boolean endThreadFlag = false;
 
     public void setEQ(EQ eq) {
         log.info("Setting demoEQ");
         if (null != eq) {
             demoEQ = eq;
             log.info("Set demoEQ");
-        }else {
+        } else {
             log.info("Got Null EQ");
         }
     }
 
     public EQ getEQ() {
         return demoEQ;
+    }
+
+    public boolean endThread() {
+        return false;
     }
 }

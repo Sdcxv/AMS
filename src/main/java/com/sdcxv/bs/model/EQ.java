@@ -13,7 +13,7 @@ public class EQ {
     // excited-relax from 10 to -10
     private int y = 0;
     // bottom size
-    private int z = 1;
+    private int z = 0;
 
     public int getVolume() {
         return volume;

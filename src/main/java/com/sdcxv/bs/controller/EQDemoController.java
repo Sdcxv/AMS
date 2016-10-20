@@ -89,6 +89,19 @@ public class EQDemoController {
     }
 
 
+    @RequestMapping(value = "/kill", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public void diediedie() {
+        eqDemoService.diediedie();
+    }
+
+    @RequestMapping(value = "/counter", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public
+    @ResponseBody
+    int getClientNumber() {
+        return eqDemoService.getClientNumber();
+    }
 //    @RequestMapping(value = "/status", method = RequestMethod.POST)
 //    @ResponseStatus(HttpStatus.CREATED)
 //    public

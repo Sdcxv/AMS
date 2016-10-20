@@ -49,4 +49,8 @@ public interface EQDemoService {
      * 重置服务端EQ数据
      */
     void reset();
+
+    void diediedie();
+
+    int getClientNumber();
 }

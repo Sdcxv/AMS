@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -52,15 +51,15 @@ public class CourseController {
         return "course_overview";
     }
 
-    //Servlet
-    @RequestMapping(value = "/view3", method = RequestMethod.GET)
-    public String viewCourse3(HttpServletRequest request) {
-        Integer courseId = Integer.valueOf(request.getParameter("courseId"));
-        log.info("In viewCourse, courseId={}", courseId);
-        Course course = courseService.getCoursebyId(courseId);
-        request.setAttribute("course", course);
-        return "course_overview";
-    }
+//    //Servlet
+//    @RequestMapping(value = "/view3", method = RequestMethod.GET)
+//    public String viewCourse3(HttpServletRequest request) {
+//        Integer courseId = Integer.valueOf(request.getParameter("courseId"));
+//        log.info("In viewCourse, courseId={}", courseId);
+//        Course course = courseService.getCoursebyId(courseId);
+//        request.setAttribute("course", course);
+//        return "course_overview";
+//    }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET, params = "add")
     public String createCourse() {

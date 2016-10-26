@@ -18,18 +18,25 @@ public class EQDemoServiceImpl implements EQDemoService {
     private boolean resetFlag = false;
     private int clientConuter = 0;//等待的线程数量
     private boolean killFlag = false;
-    private boolean sendFlag = false;
-//    boolean newEQ = false;
+    private boolean changeFlag = false;
 
     public EQ setEQStatus(EQ eqJSONString) {
         serverEQ = eqJSONString;
-//        newEQ = true;
-        return serverEQ;
+        return checkEQ(serverEQ);
     }
 
     public EQ setEQChange(EQ eqJSONString) {
+        changeFlag = true;
         eqChange = eqJSONString;
-        return eqChange;
+
+        serverEQ.setConnection(serverEQ.getConnection() + eqChange.getConnection());
+        serverEQ.setVolume(serverEQ.getVolume() + eqChange.getVolume());
+        serverEQ.setTonescape(serverEQ.getTonescape() + eqChange.getTonescape());
+        serverEQ.setX(serverEQ.getX() + eqChange.getX());
+        serverEQ.setY(serverEQ.getY() + eqChange.getY());
+        serverEQ.setZ(serverEQ.getZ() + eqChange.getZ());
+
+        return checkEQ(serverEQ);
     }
 
     /*
@@ -37,7 +44,7 @@ public class EQDemoServiceImpl implements EQDemoService {
     * */
     public EQ getClientEQ() {
         clientConuter += 1;//等待的线程数量加1
-        while (0 == eqChange.getX() && 0 == eqChange.getY() && setFlag) {
+        while (!changeFlag && !killFlag/* && 0 == eqChange.getX() && 0 == eqChange.getY()*/) {
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
@@ -49,46 +56,44 @@ public class EQDemoServiceImpl implements EQDemoService {
                 clientConuter -= 1;//等待的线程数量减1
                 return serverEQ;
             }
-            //only for test
-            if (killFlag && clientConuter > 0) {
-                clientConuter -= 1;
-                if (0 == clientConuter) {
-                    killFlag = false;
-                }
-                return new EQ();
-            }
+//            //only for test
+//            if (killFlag && clientConuter > 0) {
+//                clientConuter -= 1;
+//                if (0 == clientConuter) {
+//                    killFlag = false;
+//                }
+//                return new EQ();
+//            }
         }
-        serverEQ.setVolume(serverEQ.getVolume() + eqChange.getVolume());
-        serverEQ.setPower(serverEQ.getPower() + eqChange.getPower());
-        serverEQ.setX(serverEQ.getX() + eqChange.getX());
-        serverEQ.setY(serverEQ.getY() + eqChange.getY());
-        serverEQ.setZ(serverEQ.getZ() + eqChange.getZ());
-        eqChange = new EQ();
+        if (1 == clientConuter) {
+            changeFlag = false;
+            killFlag = false;
+            eqChange = new EQ();
+        }
+        if (killFlag) {
+            clientConuter -= 1;//等待的线程数量减1
+            return checkEQ(new EQ());
+        }
         clientConuter -= 1;//等待的线程数量减1
         return checkEQ(serverEQ);
     }
 
     public EQ getASKEQ() {
-//        while (!newEQ) {
-//            try {
-//                Thread.sleep(200);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        newEQ = false;
-        return serverEQ;
+        return checkEQ(serverEQ);
     }
 
     /**
      * 逐项设置EQ，若不设置该项需设为无效值
      */
     public EQ setEQ(EQ eqJSONString) {
+        if (-1 != eqJSONString.getConnection()) {
+            serverEQ.setConnection(eqJSONString.getConnection());
+        }
         if (-1 != eqJSONString.getVolume()) {
             serverEQ.setVolume(eqJSONString.getVolume());
         }
-        if (-1 != eqJSONString.getPower()) {
-            serverEQ.setPower(eqJSONString.getPower());
+        if (-1 != eqJSONString.getTonescape()) {
+            serverEQ.setTonescape(eqJSONString.getTonescape());
         }
         if (11 != eqJSONString.getX()) {
             serverEQ.setX(eqJSONString.getX());
@@ -100,7 +105,7 @@ public class EQDemoServiceImpl implements EQDemoService {
             serverEQ.setZ(eqJSONString.getZ());
         }
         setFlag = true;
-        return serverEQ;
+        return checkEQ(serverEQ);
     }
 
     /**
@@ -114,6 +119,18 @@ public class EQDemoServiceImpl implements EQDemoService {
     }
 
     private EQ checkEQ(EQ eq) {
+        if (eq.getConnection() < 0) {
+            eq.setConnection(0);
+        }
+        if (eq.getConnection() > 1) {
+            eq.setConnection(1);
+        }
+        if (eq.getTonescape() < 0) {
+            eq.setTonescape(0);
+        }
+        if (eq.getTonescape() > 1) {
+            eq.setTonescape(1);
+        }
         if (eq.getVolume() < 0) {
             eq.setVolume(0);
         }
@@ -144,7 +161,7 @@ public class EQDemoServiceImpl implements EQDemoService {
     /*only for test*/
     //kill all
     public void diediedie() {
-        resetFlag = true;
+        killFlag = true;
     }
 
     public int getClientNumber() {

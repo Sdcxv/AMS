@@ -48,7 +48,7 @@ public interface EQDemoService {
     /**
      * 重置服务端EQ数据
      */
-    void reset();
+    EQ reset();
 
     void diediedie();
 

@@ -3,11 +3,11 @@ package com.sdcxv.bs.model;
 /**
  * EQ DEMO Created by Xudong.Liu on 2016/10/10.
  */
-public class EQ {
+public class EQ implements Cloneable {
     //BT connection, 0 -> on , 1 -> off.
     private int connection = 1;
     //ToneScape switch, 0 -> on , 1 -> off.
-    private int tonescape = 1;
+    private int tonescape = 0;
     //volume, from 0 to 32
     private int volume = 0;
     // warm-dry， from 10 to -10
@@ -63,5 +63,16 @@ public class EQ {
 
     public void setZ(int z) {
         this.z = z;
+    }
+
+    public Object clone() {
+
+        EQ eq = null;
+        try {
+            eq = (EQ) super.clone();
+        } catch (CloneNotSupportedException e) {
+
+        }
+        return eq;
     }
 }

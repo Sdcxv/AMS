@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/eq")
 public class EQDemoController {
-    private static Logger log = LoggerFactory.getLogger(CourseController.class);
+    private static Logger log = LoggerFactory.getLogger(EQDemoController.class);
     private EQDemoService eqDemoService;
 
     @Autowired
@@ -84,8 +84,10 @@ public class EQDemoController {
     * */
     @RequestMapping(value = "/reset", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void reset() {
-        eqDemoService.reset();
+    public
+    @ResponseBody
+    EQ reset() {
+        return eqDemoService.reset();
     }
 
 

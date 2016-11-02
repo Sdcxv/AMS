@@ -1,4 +1,4 @@
-package com.sdcxv.bs;
+package com.sdcxv.bs.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

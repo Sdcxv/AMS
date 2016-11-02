@@ -6,8 +6,10 @@ package com.sdcxv.bs.model;
 public class EQ implements Cloneable {
     //BT connection, 0 -> on , 1 -> off.
     private int connection = 1;
-    //ToneScape switch, 0 -> on , 1 -> off.
-    private int tonescape = 0;
+    //Sleep, 0 -> on , 1 -> off.
+    private int sleep = 1;
+    //Music Controller, from 0 to 3.
+    private int controller = -1;
     //volume, from 0 to 32
     private int volume = 0;
     // warm-dry， from 10 to -10
@@ -25,12 +27,20 @@ public class EQ implements Cloneable {
         this.connection = connection;
     }
 
-    public int getTonescape() {
-        return tonescape;
+    public int getSleep() {
+        return sleep;
     }
 
-    public void setTonescape(int tonescape) {
-        this.tonescape = tonescape;
+    public void setSleep(int sleep) {
+        this.sleep = sleep;
+    }
+
+    public int getController() {
+        return controller;
+    }
+
+    public void setController(int controller) {
+        this.controller = controller;
     }
 
     public int getVolume() {

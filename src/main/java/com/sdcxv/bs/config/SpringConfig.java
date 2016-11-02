@@ -1,4 +1,4 @@
-package com.sdcxv.bs;
+package com.sdcxv.bs.config;
 
 import com.sdcxv.bs.controller.EQDemoController;
 import org.springframework.context.annotation.ComponentScan;
